@@ -1,0 +1,295 @@
+# LinkedIn Messaging UI Recreation
+
+A pixel-perfect recreation of the LinkedIn Messaging interface built with modern HTML, CSS, and Vite.
+
+## 📸 Overview
+
+This project recreates LinkedIn's Messaging page with high visual fidelity, including:
+- Three-column responsive layout
+- LinkedIn's design system (colors, typography, spacing)
+- Interactive filter pills with authentic styling
+- Conversation list with profile avatars
+- Message view with composition area
+- Premium sidebar
+
+## ✨ Features
+
+### Core Components
+
+- ✅ **Top Navigation Bar**
+  - LinkedIn logo and branding
+  - Global search
+  - Navigation icons (Home, My Network, Jobs, Messaging, Notifications, Me, For Business)
+  - Premium upsell banner
+  - Active state indicators
+
+- ✅ **Left Column - Conversation List** (340px)
+  - Messaging header with action buttons
+  - Search messages input
+  - Filter pill row with 6 options:
+    - **Focused** (active, green pill with dropdown arrow)
+    - Jobs, Unread, Connections, InMail, Starred
+  - Scrollable conversation list with:
+    - 56px circular profile avatars
+    - Contact names and timestamps
+    - Message previews
+    - Active conversation highlighting
+    - Online status indicators
+
+- ✅ **Center Column - Message View** (flexible width)
+  - Contact header with profile info
+  - Message thread display
+  - Message composition area with toolbar
+  - Send button and formatting options
+
+- ✅ **Right Column - Premium Sidebar** (300px)
+  - Profile avatar with Premium badge
+  - Promotional content
+  - CTA button
+  - Footer links
+
+### Design System
+
+**Colors:**
+- LinkedIn Blue: `#0a66c2`
+- Messaging Green (active pill): `#057642`
+- Background: `#f3f2ef`
+- Card Background: `#ffffff`
+- Borders: `#e0e0e0`, `#d6d6d6`
+- Text Primary: `#434649`, `rgba(0, 0, 0, 0.9)`
+- Text Secondary: `rgba(0, 0, 0, 0.6)`
+
+**Typography:**
+- Font Family: `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`
+- Base Size: `14px`
+- Font Weights: 400 (regular), 500 (medium), 600 (semibold)
+
+**Filter Pills Specifications:**
+- Capsule shape: `border-radius: 999px`
+- Height: ~24px (3px vertical padding + 18px line-height)
+- Horizontal padding: `14px`
+- Default: White background, `#d6d6d6` border
+- Active (Focused): Green background `#057642`, white text
+- Hover: `#f0f2f5` background, `#c2c8d0` border
+- No wrapping on desktop (horizontal scroll on narrow screens)
+- All pills aligned on single horizontal baseline
+
+**Avatars:**
+- Conversation list: `56px` circular
+- Message view: `48px` (header), `32px` (message bubbles)
+- Circular with `object-fit: cover`
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone or navigate to the project:**
+   ```bash
+   cd "/Users/pranavdeo/Desktop/LinkedIn Messaging"
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+### Development
+
+Start the development server with hot reload:
+
+```bash
+npm run dev
+```
+
+The app will be available at **http://localhost:5173/**
+
+### Build for Production
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+Output will be in the `dist/` folder.
+
+### Preview Production Build
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
+linkedin-messaging/
+├── index.html              # Main HTML file (active development)
+├── linkedinm.html          # LinkedIn reference HTML (read-only)
+├── src/
+│   └── styles.css         # Complete stylesheet
+├── assets/
+│   └── images/            # Image assets
+├── dist/                  # Production build output
+├── node_modules/          # Dependencies
+├── package.json           # Project configuration
+├── vite.config.js         # Vite configuration
+├── .gitignore            # Git ignore rules
+└── README.md             # This file
+```
+
+## 🎨 Key Implementation Details
+
+### Filter Pills Row
+
+The filter pill row sits directly below the search bar in the left column:
+
+**HTML Structure:**
+```html
+<div class="msg-filter-row">
+  <div class="msg-filter-pills" role="radiogroup">
+    <button class="msg-pill msg-pill--active">
+      Focused
+      <span class="msg-pill-arrow">▾</span>
+    </button>
+    <button class="msg-pill">Jobs</button>
+    <!-- ... other pills ... -->
+  </div>
+</div>
+```
+
+**CSS Highlights:**
+- Container background: `#f3f2ef`
+- Compact padding: `4px 16px 6px 16px`
+- Pills use `flex: 0 0 auto` to prevent shrinking
+- `flex-wrap: nowrap` ensures single horizontal line
+- `overflow-x: auto` for horizontal scroll on narrow screens
+- Perfect baseline alignment with `line-height: 18px`
+
+### Responsive Design
+
+**Desktop (> 992px):**
+- Full three-column layout
+- All features visible
+
+**Tablet (768px - 992px):**
+- Premium sidebar hidden
+- Two-column layout (conversations + messages)
+
+**Mobile (< 768px):**
+- Single column layout
+- Message view takes full width
+
+## 🛠 Tech Stack
+
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with Flexbox and Grid
+- **Vite** - Lightning-fast development server and build tool
+  - Hot Module Replacement (HMR)
+  - Optimized production builds
+  - Fast cold start (~160ms)
+
+## 🎯 Development Workflow
+
+### Making Changes
+
+1. Edit `index.html` or `src/styles.css`
+2. Browser auto-reloads via Vite HMR
+3. No manual refresh needed!
+
+### Testing
+
+- Visual comparison with LinkedIn's actual UI
+- Responsive testing at different breakpoints
+- Hover and interactive state verification
+
+### Deployment
+
+```bash
+npm run build    # Creates dist/ folder
+npm run preview  # Test locally
+# Deploy dist/ to your hosting service (Netlify, Vercel, etc.)
+```
+
+## 📝 Recent Updates
+
+### Latest Changes (November 2025)
+
+1. **Filter Pills Alignment**
+   - Fixed all pills to sit on single horizontal baseline
+   - Prevented wrapping on desktop with `flex-wrap: nowrap`
+   - Added horizontal scroll for narrow screens
+   - Consistent height with `line-height: 18px`
+   - Reduced padding to `3px 14px` for compact appearance
+
+2. **Profile Avatars**
+   - Updated conversation list avatars to 56px
+   - Added colorful placeholder avatars with initials
+   - Improved visual hierarchy
+
+3. **Active Pill Styling**
+   - Green background (`#057642`) for LinkedIn Messaging theme
+   - White dropdown arrow indicator
+   - Smooth hover transitions (120ms)
+
+## 🔍 Important Notes
+
+- **`linkedinm.html`** is the original LinkedIn HTML file used as a visual reference. **Do not modify this file.**
+- **`index.html`** is our working file where all changes are made.
+- The project uses **no external CSS frameworks** - everything is custom-built.
+- All colors and spacing are carefully matched to LinkedIn's production UI.
+
+## 🤝 Development Guidelines
+
+When making updates:
+
+1. Always reference `linkedinm.html` for visual accuracy
+2. Maintain the existing class naming conventions
+3. Keep CSS organized by component sections
+4. Test responsive behavior at multiple breakpoints
+5. Ensure accessibility (focus states, contrast, semantic HTML)
+6. Use system font stack for cross-platform consistency
+
+## 🌐 Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+
+## 📊 Project Stats
+
+- **Dependencies**: 13 packages
+- **Build Tool**: Vite v7.2.4
+- **Dev Server Startup**: ~160ms
+- **Vulnerabilities**: 0 ✅
+- **Lines of CSS**: ~750 lines
+- **Components**: 4 major sections (nav, conversations, messages, sidebar)
+
+## 🎓 Learning Resources
+
+This project demonstrates:
+- Modern CSS layout techniques (Flexbox, Grid)
+- Component-based styling approach
+- Responsive design patterns
+- Design system implementation
+- Production build optimization with Vite
+
+## 📄 License
+
+MIT
+
+## 🙏 Acknowledgments
+
+Design and UI inspired by LinkedIn's Messaging interface.
+
+---
+
+**Made with ❤️ using modern web technologies**
+
+**Current Status:** Development server active at http://localhost:5173/

@@ -1,0 +1,42 @@
+{
+    "version": "2.0.0",
+    "name": "LinkedIn Messaging UI Recreation - Interactive & Aligned",
+    "date": "2025-11-29",
+    "description": "Perfect baseline alignment for filter pills, interactive messaging, and LinkedIn-style message input",
+    "files": {
+        "index.html": {
+            "lines": 355,
+            "changes": "Added SVG toolbar icons, message input container with collapse button"
+        },
+        "src/styles.css": {
+            "lines": 751,
+            "changes": "Fixed pill alignment with standardized padding/line-height, added LinkedIn-style message input area"
+        },
+        "src/app.js": {
+            "lines": 240,
+            "changes": "Full interactive messaging system with conversation switching and send functionality"
+        }
+    },
+    "features": [
+        "Perfect horizontal baseline alignment for all filter pills",
+        "Interactive conversation selection",
+        "Send messages with real-time updates",
+        "LinkedIn-style message input area with gray background",
+        "Disabled/enabled send button states",
+        "Toolbar with SVG icons (photo, attachment, emoji)",
+        "Dummy conversation data for 7 contacts",
+        "Enter key to send messages"
+    ],
+    "changes_from_v1": [
+        "Fixed filter pills baseline alignment (padding: 4px 16px, line-height: 1)",
+        "Created src/app.js for interactive functionality",
+        "Updated message input to large textarea with gray background",
+        "Added proper toolbar icons as SVGs",
+        "Send button with disabled/enabled states",
+        "Conversation switching via click handlers",
+        "Real-time message timestamps"
+    ],
+    "dependencies": {
+        "vite": "^7.2.4"
+    }
+}

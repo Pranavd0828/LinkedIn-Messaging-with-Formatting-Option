@@ -1,0 +1,17 @@
+{
+  "name": "linkedin-messaging",
+  "version": "1.0.0",
+  "description": "LinkedIn Messaging Interface Recreation",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["linkedin", "messaging", "ui", "recreation"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaging | LinkedIn</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <script src="src/app.js" defer></script>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230a66c2' d='M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z'/%3E%3C/svg%3E">
+</head>
+
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="top-nav__container">
+            <div class="top-nav__left">
+                <a href="#" class="top-nav__logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24">
+                        <path fill="#0a66c2"
+                            d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z" />
+                    </svg>
+                </a>
+                <div class="top-nav__search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                        <path
+                            d="M14.56 12.44L11.3 9.18a5.51 5.51 0 10-2.12 2.12l3.26 3.26a1.5 1.5 0 102.12-2.12zM2.5 6.5a4 4 0 114 4 4 4 0 01-4-4z">
+                        </path>
+                    </svg>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="top-nav__right">
+                <a href="#" class="top-nav__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M23 9v2h-2v7a3 3 0 01-3 3h-4v-6h-4v6H6a3 3 0 01-3-3v-7H1V9l11-7z"></path>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="top-nav__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M12 16v6H3v-6a3 3 0 013-3h3a3 3 0 013 3zm5.5-3A3.5 3.5 0 1014 9.5a3.5 3.5 0 003.5 3.5zm1 2h-2a2.5 2.5 0 00-2.5 2.5V22h7v-4.5a2.5 2.5 0 00-2.5-2.5zM7.5 2A4.5 4.5 0 1012 6.5 4.49 4.49 0 007.5 2z">
+                        </path>
+                    </svg>
+                    <span>My Network</span>
+                </a>
+                <a href="#" class="top-nav__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M17 6V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1H2v4a3 3 0 003 3h14a3 3 0 003-3V6zM9 5a1 1 0 011-1h4a1 1 0 011 1v1H9zm10 9a4 4 0 003-1.38V17a3 3 0 01-3 3H5a3 3 0 01-3-3v-4.38A4 4 0 005 14z">
+                        </path>
+                    </svg>
+                    <span>Jobs</span>
+                </a>
+                <a href="#" class="top-nav__item top-nav__item--active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M16 4H8a5 5 0 00-5 5v4a5 5 0 005 5h1l-.45 2.68a1 1 0 001.69.88L14.5 18H16a5 5 0 005-5V9a5 5 0 00-5-5zM8 11a1.5 1.5 0 111.5-1.5A1.5 1.5 0 018 11zm4 0a1.5 1.5 0 111.5-1.5A1.5 1.5 0 0112 11zm4 0a1.5 1.5 0 111.5-1.5A1.5 1.5 0 0116 11z">
+                        </path>
+                    </svg>
+                    <span>Messaging</span>
+
+                </a>
+                <a href="#" class="top-nav__item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path
+                            d="M22 19h-8.28a2 2 0 11-3.44 0H2v-1a4.52 4.52 0 011.17-2.83l1-1.17h15.7l1 1.17A4.42 4.42 0 0122 18zM18.21 7.44A6.27 6.27 0 0012 2a6.27 6.27 0 00-6.21 5.44L5 13h14z">
+                        </path>
+                    </svg>
+                    <span>Notifications</span>
+                </a>
+                <a href="#" class="top-nav__item top-nav__item--me">
+                    <img src="https://i.pravatar.cc/100?img=14" alt="Me" class="top-nav__avatar">
+                    <div class="top-nav__item-text-wrapper">
+                        <span>Me</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                            fill="currentColor">
+                            <path d="M8 11L3 6h10z"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <div class="top-nav__divider"></div>
+
+                <a href="#" class="top-nav__item top-nav__item--business">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M3 3h4v4H3V3zm7 0h4v4h-4V3zm7 0h4v4h-4V3zM3 10h4v4H3v-4zm7 0h4v4h-4v-4zm7 0h4v4h-4v-4zM3 17h4v4H3v-4zm7 0h4v4h-4v-4zm7 0h4v4h-4v-4z">
+                        </path>
+                    </svg>
+                    <div class="top-nav__item-text-wrapper">
+                        <span>For Business</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                            fill="currentColor">
+                            <path d="M8 11L3 6h10z"></path>
+                        </svg>
+                    </div>
+                </a>
+                <div class="top-nav__premium">
+                    <span>Premium: 50% Off</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Global Header Section (Row 1 & 2) -->
+        <div class="messaging-header">
+            <div class="header-top">
+                <h1 class="messaging-title">Messaging</h1>
+
+                <div class="search-container">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor">
+                        <path
+                            d="M14.56 12.44L11.3 9.18a5.51 5.51 0 10-2.12 2.12l3.26 3.26a1.5 1.5 0 102.12-2.12zM2.5 6.5a4 4 0 114 4 4 4 0 01-4-4z">
+                        </path>
+                    </svg>
+                    <input type="text" class="search-input" placeholder="Search messages">
+                </div>
+
+                <div class="header-actions">
+                    <button class="icon-button" aria-label="More options">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="5" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="12" cy="19" r="2"></circle>
+                        </svg>
+                    </button>
+                    <button class="icon-button compose-button" aria-label="New message">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21 3L0 10l7.66 4.26L16 8l-6.26 8.34L14 24l7-21z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-pills">
+                <button class="pill active" data-filter="FOCUSED" type="button">
+                    Focused
+                    <svg class="pill-dropdown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                        fill="currentColor">
+                        <path d="M8 11L3 6h10z"></path>
+                    </svg>
+                </button>
+                <button class="pill" data-filter="JOBS" type="button">Jobs</button>
+                <button class="pill" data-filter="UNREAD" type="button">Unread</button>
+                <button class="pill" data-filter="CONNECTIONS" type="button">Connections</button>
+                <button class="pill" data-filter="INMAIL" type="button">InMail</button>
+                <button class="pill" data-filter="STARRED" type="button">Starred</button>
+            </div>
+        </div>
+
+        <!-- Messaging Columns (Row 3) -->
+        <div class="messaging-columns">
+            <!-- Left Sidebar - Conversation List -->
+            <aside class="conversation-list">
+
+                <div class="conversation-list__items">
+                    <div class="conversation-item">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Sarah Jenkins"
+                            class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">Sarah Jenkins</span>
+                                <span class="conversation-item__time">Nov 27</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__sender">You:</span>
+                                <span class="conversation-item__text">Yes, Thursday afternoon works best for me.</span>
+                            </div>
+                            <span class="conversation-item__status">●</span>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+
+                    <div class="conversation-item conversation-item--active">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="David Chen" class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">David Chen</span>
+                                <span class="conversation-item__time">2:38 PM</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__sender">You:</span>
+                                <span class="conversation-item__text">Thank you. I have scheduled a time for Tuesday at
+                                    10 AM.</span>
+                            </div>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://i.pravatar.cc/100?img=47" alt="Emily Rodriguez"
+                            class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">Emily Rodriguez</span>
+                                <span class="conversation-item__time">Nov 24</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__text">Sponsored · Join the team building the next
+                                    generation of Apple services. Apply now!</span>
+                            </div>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://i.pravatar.cc/100?img=58" alt="Michael Chang"
+                            class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">Michael Chang</span>
+                                <span class="conversation-item__time">Nov 23</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__sender">You:</span>
+                                <span class="conversation-item__text">Sounds good. Let me know what day works for
+                                    you.</span>
+                            </div>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://i.pravatar.cc/100?img=63" alt="Jessica Williams"
+                            class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">Jessica Williams</span>
+                                <span class="conversation-item__time">Nov 21</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__text">🚀 DoorDash | 2026 🚀 Hiring Batch - Product
+                                    Managers needed! Are you interested in learning more?</span>
+                            </div>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://i.pravatar.cc/100?img=68" alt="Alex Thompson"
+                            class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">Alex Thompson</span>
+                                <span class="conversation-item__time">Nov 21</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__text">InMail · Help Us Scale Expert Growth 🚀 - We're
+                                    looking for talented product leaders to join our team.</span>
+                            </div>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+
+                    <div class="conversation-item">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Ryan Cooper" class="conversation-item__avatar">
+                        <div class="conversation-item__content">
+                            <div class="conversation-item__header">
+                                <span class="conversation-item__name">Ryan Cooper</span>
+                                <span class="conversation-item__time">Nov 19</span>
+                            </div>
+                            <div class="conversation-item__preview">
+                                <span class="conversation-item__text">Hey Pranav, hope you're doing well! Saw your
+                                    recent post about AI product management.</span>
+                            </div>
+                        </div>
+                        <button class="conversation-item__options">⋮</button>
+                        <button class="conversation-item__star">☆</button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center - Message View -->
+            <section class="message-view">
+                <div class="message-view__header">
+                    <div class="message-view__header-left">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="David Chen" class="message-view__avatar">
+                        <div class="message-view__info">
+                            <h2 class="message-view__name">David Chen ✓ · 2:38 PM</h2>
+                            <p class="message-view__title">Director of Product at Netflix<br>netflix.com</p>
+                        </div>
+                    </div>
+                    <div class="message-view__header-actions">
+                        <button class="icon-btn">⋯</button>
+                    </div>
+                </div>
+
+                <div class="message-view__content">
+                    <div class="message">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="David Chen" class="message__avatar">
+                        <div class="message__content">
+                            <div class="message__header">
+                                <span class="message__sender">David Chen</span>
+                                <span class="message__time">1:45 PM</span>
+                            </div>
+                            <div class="message__text">
+                                <p>Hi! I have an exciting opportunity for a Sr Product Manager role at Netflix that I
+                                    think would be perfect for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message message--mine">
+                        <img src="https://i.pravatar.cc/100?img=14" alt="You" class="message__avatar">
+                        <div class="message__content">
+                            <div class="message__header">
+                                <span class="message__sender">You</span>
+                                <span class="message__time">2:00 PM</span>
+                            </div>
+                            <div class="message__text">
+                                <p>Hi David, thanks for reaching out! I'm definitely interested in the streaming space.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message">
+                        <img src="https://i.pravatar.cc/100?img=32" alt="David Chen" class="message__avatar">
+                        <div class="message__content">
+                            <div class="message__header">
+                                <span class="message__sender">David Chen</span>
+                                <span class="message__time">2:10 PM</span>
+                            </div>
+                            <div class="message__text">
+                                <p>Awesome. Let's set up a time to chat. Here is my calendar link:
+                                    calendly.com/david-netflix</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message message--mine">
+                        <img src="https://i.pravatar.cc/100?img=14" alt="You" class="message__avatar">
+                        <div class="message__content">
+                            <div class="message__header">
+                                <span class="message__sender">You</span>
+                                <span class="message__time">2:38 PM</span>
+                            </div>
+                            <div class="message__text">
+                                <p>Thank you. I have scheduled a time for Tuesday at 10 AM.</p>
+                            </div>
+                            <span class="message__read">✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="message-view__footer">
+                    <div class="message-input-container">
+                        <!-- Rich Text Formatting Toolbar -->
+                        <div class="formatting-toolbar">
+                            <button class="format-btn" data-command="bold" title="Bold"><strong>B</strong></button>
+                            <button class="format-btn" data-command="italic" title="Italic"><em>I</em></button>
+                            <button class="format-btn" data-command="underline" title="Underline"><u>U</u></button>
+                            <button class="format-btn" data-command="strikeThrough"
+                                title="Strikethrough"><s>S</s></button>
+                        </div>
+
+                        <!-- Rich Text Editor (Replaces Textarea) -->
+                        <div class="message-view__input" contenteditable="true" role="textbox" aria-multiline="true">
+                        </div>
+
+                    </div>
+                    <div class="message-view__toolbar">
+                        <div class="message-view__toolbar-left">
+                            <button class="toolbar-icon" title="Add a photo">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <polyline points="21 15 16 10 5 21" />
+                                </svg>
+                            </button>
+                            <button class="toolbar-icon" title="Attach a file">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path
+                                        d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                                </svg>
+                            </button>
+                            <button class="toolbar-icon" title="Add an emoji">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                                    <line x1="9" y1="9" x2="9.01" y2="9" />
+                                    <line x1="15" y1="9" x2="15.01" y2="9" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="message-view__toolbar-right">
+                            <button class="btn-send">Send</button>
+                            <button class="toolbar-icon toolbar-icon--more" title="More options">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="12" cy="5" r="2" />
+                                    <circle cx="12" cy="12" r="2" />
+                                    <circle cx="12" cy="19" r="2" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Sidebar - Premium Ad -->
+            <aside class="right-sidebar">
+                <div class="premium-ad">
+                    <div class="premium-ad__header">
+                        <div class="premium-ad__profile">
+                            <img src="https://i.pravatar.cc/100?img=14" alt="Profile" class="premium-ad__avatar">
+                            <span class="premium-ad__profile-name">Profile</span>
+                        </div>
+                        <button class="premium-ad__close">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                fill="currentColor">
+                                <path
+                                    d="M14 3.41L12.59 2 8 6.59 3.41 2 2 3.41 6.59 8 2 12.59 3.41 14 8 9.41 12.59 14 14 12.59 9.41 8z" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="premium-ad__content">
+                        <div class="premium-ad__badge-container">
+                            <span class="premium-badge">Premium</span>
+                        </div>
+                        <h3 class="premium-ad__title">Boost your job search with AI-powered insights</h3>
+                        <button class="premium-ad__cta">Redeem offer</button>
+                    </div>
+                    <div class="premium-ad__footer">
+                        <div class="premium-ad__links">
+                            <a href="#">About</a>
+                            <a href="#">Accessibility</a>
+                            <a href="#">Help Center</a>
+                        </div>
+                        <div class="premium-ad__links">
+                            <a href="#">Privacy & Terms</a>
+                            <a href="#">Ad Choices</a>
+                            <a href="#">Advertising</a>
+                        </div>
+                        <div class="premium-ad__links">
+                            <a href="#">Business Services</a>
+                            <a href="#">Get the LinkedIn app</a>
+                        </div>
+                        <div class="premium-ad__links">
+                            <a href="#">More</a>
+                        </div>
+                        <div class="premium-ad__copyright">
+                            <img src="https://static.licdn.com/aero-v1/sc/h/aahlc8ivbnmk0t3eyz8as5gvr" alt="LinkedIn"
+                                class="premium-ad__logo">
+                            <span>LinkedIn Corporation © 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+    </main>
+</body>
+
+</html>

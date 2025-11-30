@@ -1,0 +1,45 @@
+{
+    "version": "3.0.0",
+    "name": "LinkedIn Messaging UI Recreation - Perfect Header & Pill Alignment",
+    "date": "2025-11-29",
+    "description": "Single-line header layout with perfect filter pill baseline alignment based on temp folder reference",
+    "files": {
+        "index.html": {
+            "lines": 365,
+            "changes": "Restructured header with flex layout, added SVG icons for search and actions"
+        },
+        "src/styles.css": {
+            "lines": 816,
+            "changes": "Complete header CSS overhaul matching temp structure, consistent pill dimensions"
+        },
+        "src/app.js": {
+            "lines": 240,
+            "changes": "Updated selectors for new class names"
+        }
+    },
+    "features": [
+        "Single horizontal header strip with consistent height",
+        "Left-aligned 'Messaging' title",
+        "Centered search input with icon",
+        "Right-aligned action buttons (dots menu, compose)",
+        "Filter pills on exact same baseline",
+        "Consistent padding (6px 16px) across all pills",
+        "Pills and divider vertically centered",
+        "Small fixed gap between search and pills (16px)",
+        "Thin horizontal rule under pill row",
+        "No extra padding between rule and first conversation"
+    ],
+    "changes_from_v2": [
+        "Replaced multi-row header with single flex row (header-top)",
+        "Changed pill class from msg-pill to pill",
+        "Changed active class from msg-pill--active to pill.active",
+        "Unified search into header-top flex container",
+        "Removed separate conversation-list__search div",
+        "Updated pill padding to 6px 16px (was 4px 16px)",
+        "Changed border-radius to 16px (was 999px)",
+        "Simplified icon buttons with proper SVG structure"
+    ],
+    "dependencies": {
+        "vite": "^7.2.4"
+    }
+}

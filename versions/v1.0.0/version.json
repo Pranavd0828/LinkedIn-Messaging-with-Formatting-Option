@@ -1,0 +1,31 @@
+{
+    "version": "1.0.0",
+    "name": "LinkedIn Messaging UI Recreation - Stable",
+    "date": "2025-11-29",
+    "description": "First stable version with complete three-column layout, filter pills, and real profile pictures",
+    "files": {
+        "index.html": {
+            "lines": 321,
+            "checksum": "Conversation list with 7 items, filter pills with green active state"
+        },
+        "src/styles.css": {
+            "lines": 751,
+            "checksum": "Complete design system with filter pills alignment fixes"
+        },
+        "README.md": {
+            "description": "Comprehensive project documentation"
+        }
+    },
+    "features": [
+        "Three-column responsive layout",
+        "Filter pills with perfect horizontal alignment",
+        "Green active 'Focused' pill with dropdown arrow",
+        "Real profile pictures from pravatar.cc",
+        "48px circular conversation avatars",
+        "Message view with composition area",
+        "Premium sidebar"
+    ],
+    "dependencies": {
+        "vite": "^7.2.4"
+    }
+}
