@@ -1,10 +1,16 @@
-# Version History - LinkedIn Messaging Recreation
-
+# Version History
 This document tracks all versions of the LinkedIn Messaging UI recreation project.
 
 ---
 
-## Version 2.1.0 (Current) - November 29, 2025
+## v2.1.1: Final Polish & Fixes
+**Date:** November 29, 2025
+
+*   **[FIX] Profile Images:** Corrected avatar gender mismatches for all users.
+*   **[FIX] List Rendering:** Refactored conversation list to render dynamically from JS, ensuring consistency with chat view.
+*   **[FIX] Message Formatting:** Fixed issue where line breaks were lost and removed unwanted indentation in sent messages.
+
+## v2.1.0: Enhancements Messaging Recreation
 **Status:** ✨ Enhanced - Editing & Polish
 *(Formerly v4.1.0)*
 

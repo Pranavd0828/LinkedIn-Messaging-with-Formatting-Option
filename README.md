@@ -5,11 +5,12 @@
 
 A pixel-perfect recreation of the LinkedIn Messaging interface built with modern HTML, CSS, and Vite.
 
-> **Current ![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)](VERSION_HISTORY.md)
+> **Current ![Version](https://img.shields.io/badge/version-2.1.1-blue.svg)](VERSION_HISTORY.md)
 
-**Current Version:** v2.1.0 (Enhanced Editing)
+**Current Version:** v2.1.1 (Final Polish)
 
 ## Recent Updates
+- **v2.1.1:** Fixed profile images, dynamic list rendering, and message whitespace issues.
 - **v2.1.0:** Added active state for formatting buttons and message editing functionality with '(Edited)' label.
 - **v2.0.0:** Implemented Rich Text Editor prototype with formatting toolbar.
 - **v1.4.0:** Interactive polish with realistic data, active states, and hover effects.
