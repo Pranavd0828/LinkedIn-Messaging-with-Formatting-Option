@@ -74,13 +74,55 @@ const conversationData = {
 // Current active conversation
 let activeConversation = 'david-chen';
 
+// Render the conversation list from data
+function renderConversationList() {
+    const listContainer = document.querySelector('.conversation-list__items');
+    if (!listContainer) return;
+
+    listContainer.innerHTML = Object.keys(conversationData).map(key => {
+        const conv = conversationData[key];
+        const lastMsg = conv.messages[conv.messages.length - 1];
+        const isActive = key === activeConversation ? 'conversation-item--active' : '';
+
+        // Determine preview text (Sender: Text)
+        let previewText = lastMsg.text;
+        if (lastMsg.isMine) {
+            previewText = `<span class="conversation-item__sender">You:</span> <span class="conversation-item__text">${lastMsg.text}</span>`;
+        } else {
+            previewText = `<span class="conversation-item__text">${lastMsg.text}</span>`;
+        }
+
+        // Truncate text for preview
+        // Note: CSS handles truncation visually, but we keep structure clean
+
+        return `
+            <div class="conversation-item ${isActive}" data-id="${key}">
+                <img src="${conv.avatar}" alt="${conv.name}" class="conversation-item__avatar">
+                <div class="conversation-item__content">
+                    <div class="conversation-item__header">
+                        <span class="conversation-item__name">${conv.name}</span>
+                        <span class="conversation-item__time">${lastMsg.time}</span>
+                    </div>
+                    <div class="conversation-item__preview">
+                        ${previewText}
+                    </div>
+                </div>
+                <button class="conversation-item__options">⋮</button>
+                <button class="conversation-item__star">☆</button>
+            </div>
+        `;
+    }).join('');
+}
+
 // Initialize the app
 function initializeApp() {
+    // Render the list first
+    renderConversationList();
+
     // Add click handlers to conversation items
     const conversationItems = document.querySelectorAll('.conversation-item');
-    conversationItems.forEach((item, index) => {
-        const conversationKeys = Object.keys(conversationData);
-        const conversationKey = conversationKeys[index];
+    conversationItems.forEach((item) => {
+        const conversationKey = item.getAttribute('data-id');
 
         item.addEventListener('click', () => {
             selectConversation(conversationKey, item);
@@ -113,7 +155,7 @@ function initializeApp() {
             }
         });
     }
-    // Load initial conversation (Joe Battinieri)
+    // Load initial conversation
     loadConversation(activeConversation);
 }
 
