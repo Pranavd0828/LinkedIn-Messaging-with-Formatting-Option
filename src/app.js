@@ -5,7 +5,7 @@
 const conversationData = {
     'sarah-jenkins': {
         name: 'Sarah Jenkins',
-        avatar: 'https://i.pravatar.cc/100?img=5',
+        avatar: 'https://i.pravatar.cc/100?img=44',
         title: 'Senior Recruiter at Google',
         messages: [
             { sender: 'Sarah Jenkins', text: 'Hi Pranav! I came across your profile and was impressed by your experience. We have a Senior PM role open.', time: '2:15 PM', isMine: false },
@@ -16,7 +16,7 @@ const conversationData = {
     },
     'david-chen': {
         name: 'David Chen',
-        avatar: 'https://i.pravatar.cc/100?img=11',
+        avatar: 'https://i.pravatar.cc/100?img=59',
         title: 'Director of Product at Netflix',
         company: 'netflix.com',
         messages: [
@@ -47,7 +47,7 @@ const conversationData = {
     },
     'jessica-williams': {
         name: 'Jessica Williams',
-        avatar: 'https://i.pravatar.cc/100?img=16',
+        avatar: 'https://i.pravatar.cc/100?img=45',
         title: 'Recruiter at DoorDash',
         messages: [
             { sender: 'Jessica Williams', text: '🚀 DoorDash | 2026 🚀 Hiring Batch - Product Managers needed! Are you interested in learning more?', time: 'Nov 21', isMine: false }
