@@ -225,9 +225,7 @@ function loadConversation(conversationKey) {
               <span class="message__time">${msg.time}</span>
               <button class="message__edit-btn" onclick="handleEdit(this)">✎ Edit</button>
             </div>
-            <div class="message__text">
-              <p>${msg.text}</p>
-            </div>
+            <div class="message__text">${msg.text}</div>
           </div>
         </div>
       `;
@@ -240,9 +238,7 @@ function loadConversation(conversationKey) {
               <span class="message__sender">${msg.sender}</span>
               <span class="message__time">${msg.time}</span>
             </div>
-            <div class="message__text">
-              <p>${msg.text}</p>
-            </div>
+            <div class="message__text">${msg.text}</div>
           </div>
         </div>
       `;
@@ -256,7 +252,7 @@ function loadConversation(conversationKey) {
 // Handle Message Editing
 window.handleEdit = function (btn) {
     const messageEl = btn.closest('.message');
-    const textEl = messageEl.querySelector('.message__text p');
+    const textEl = messageEl.querySelector('.message__text');
     const currentText = textEl.innerHTML; // Keep HTML for rich text
 
     // Convert to editable
@@ -265,7 +261,7 @@ window.handleEdit = function (btn) {
     editableDiv.contentEditable = true;
     editableDiv.innerHTML = currentText;
 
-    // Replace p with editable div
+    // Replace div with editable div
     textEl.replaceWith(editableDiv);
     editableDiv.focus();
 
