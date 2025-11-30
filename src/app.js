@@ -5,7 +5,7 @@
 const conversationData = {
     'sarah-jenkins': {
         name: 'Sarah Jenkins',
-        avatar: 'https://i.pravatar.cc/100?img=12',
+        avatar: 'https://i.pravatar.cc/100?img=5',
         title: 'Senior Recruiter at Google',
         messages: [
             { sender: 'Sarah Jenkins', text: 'Hi Pranav! I came across your profile and was impressed by your experience. We have a Senior PM role open.', time: '2:15 PM', isMine: false },
@@ -16,7 +16,7 @@ const conversationData = {
     },
     'david-chen': {
         name: 'David Chen',
-        avatar: 'https://i.pravatar.cc/100?img=32',
+        avatar: 'https://i.pravatar.cc/100?img=11',
         title: 'Director of Product at Netflix',
         company: 'netflix.com',
         messages: [
@@ -28,7 +28,7 @@ const conversationData = {
     },
     'emily-rodriguez': {
         name: 'Emily Rodriguez',
-        avatar: 'https://i.pravatar.cc/100?img=47',
+        avatar: 'https://i.pravatar.cc/100?img=9',
         title: 'Talent Acquisition at Apple',
         messages: [
             { sender: 'Emily Rodriguez', text: 'Sponsored · Join the team building the next generation of Apple services. Apply now!', time: 'Nov 24', isMine: false }
@@ -36,7 +36,7 @@ const conversationData = {
     },
     'michael-chang': {
         name: 'Michael Chang',
-        avatar: 'https://i.pravatar.cc/100?img=58',
+        avatar: 'https://i.pravatar.cc/100?img=13',
         title: 'Product Lead at Uber',
         messages: [
             { sender: 'Michael Chang', text: 'Pranav, are you open to new opportunities? We are building a new vertical at Uber.', time: '10:30 AM', isMine: false },
@@ -47,7 +47,7 @@ const conversationData = {
     },
     'jessica-williams': {
         name: 'Jessica Williams',
-        avatar: 'https://i.pravatar.cc/100?img=63',
+        avatar: 'https://i.pravatar.cc/100?img=16',
         title: 'Recruiter at DoorDash',
         messages: [
             { sender: 'Jessica Williams', text: '🚀 DoorDash | 2026 🚀 Hiring Batch - Product Managers needed! Are you interested in learning more?', time: 'Nov 21', isMine: false }
@@ -55,7 +55,7 @@ const conversationData = {
     },
     'alex-thompson': {
         name: 'Alex Thompson',
-        avatar: 'https://i.pravatar.cc/100?img=68',
+        avatar: 'https://i.pravatar.cc/100?img=33',
         title: 'Head of Growth at Stripe',
         messages: [
             { sender: 'Alex Thompson', text: 'InMail · Help Us Scale Expert Growth 🚀 - We\'re looking for talented product leaders to join our team.', time: 'Nov 21', isMine: false }
@@ -63,7 +63,7 @@ const conversationData = {
     },
     'ryan-cooper': {
         name: 'Ryan Cooper',
-        avatar: 'https://i.pravatar.cc/100?img=12',
+        avatar: 'https://i.pravatar.cc/100?img=53',
         title: 'Engineering Manager at Meta',
         messages: [
             { sender: 'Ryan Cooper', text: 'Hey Pranav, hope you\'re doing well! Saw your recent post about AI product management.', time: 'Nov 19', isMine: false }
