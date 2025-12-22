@@ -10,13 +10,25 @@ Professional communication often requires emphasis and structure that plain text
 
 ## 3. Target Users and Use Cases
 
-This feature is designed for all LinkedIn users, but specifically targets professionals, recruiters, and project managers who rely on clear communication.
+This feature targets professionals who rely on high-stakes, asynchronous communication to do their jobs. We have identified three primary personas where clarity is non-negotiable.
 
-**Primary Use Case: Emphasizing Logistic Details**
-A recruiter sends an interview schedule to a candidate. They use Bold formatting to highlight the date, time, and videolink platform to ensure the candidate sees the most important information immediately.
+**Primary Persona: The Technical Recruiter**
+Recruiters send dozens of InMails daily containing critical logistical information.
+*   **Scenario:** A recruiter invites a candidate to a final round interview.
+*   **Action:** They use **Bold** to highlight the date (Thursday, Oct 12th) and time (2:00 PM EST) to prevent scheduling errors. They use *Italics* to emphasize that the interview will be a technical coding session, ensuring the candidate prepares correctly.
+*   **Value:** Reduces "no-show" rates and back-and-forth clarification emails.
 
-**Secondary Use Case: Structuring Status Updates**
-A team lead sends a weekly update to a group chat. They use Italic formatting to denote pending action items and Strikethrough to mark completed tasks from the previous week, creating a mini status report that is easy to scan.
+**Secondary Persona: The Sales Professional**
+Sales Development Reps (SDRs) need their outreach to stand out in a crowded inbox.
+*   **Scenario:** An SDR sends a cold outreach message to a prospect.
+*   **Action:** They use **Bold** to highlight the unique value proposition (e.g., **"Reduce closing time by 20%"**) and Strikethrough to show a limited-time discount (e.g., ~~$100/mo~~ $50/mo).
+*   **Value:** Increases open-to-reply conversion rates by drawing the eye to the Benefit statement.
+
+**Tertiary Persona: The Engineering Leader**
+Engineering Managers often coordinate incident responses or critical updates via messaging groups.
+*   **Scenario:** An EM posts an update about a production outage in the team channel.
+*   **Action:** They use **Bold** for the Incident Severity (**SEV1**) and *Italics* for the current status (*Investigating*) to distinguish it from casual chatter.
+*   **Value:** clear, actionable communication that cuts through noise during emergencies.
 
 ## 4. User Flow and Interaction
 
