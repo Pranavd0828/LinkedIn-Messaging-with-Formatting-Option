@@ -1,15 +1,22 @@
 {
   "name": "linkedin-messaging",
   "version": "1.0.0",
-  "description": "LinkedIn Messaging Interface Recreation",
+  "description": "A high-fidelity recreation of the LinkedIn Messaging interface using modern HTML, CSS, and Vite.",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "keywords": ["linkedin", "messaging", "ui", "recreation"],
-  "author": "",
+  "keywords": [
+    "linkedin",
+    "messaging",
+    "ui",
+    "recreation",
+    "vite",
+    "css"
+  ],
+  "author": "Pranav Deo",
   "license": "ISC",
   "devDependencies": {
     "vite": "^5.0.0"

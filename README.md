@@ -61,7 +61,7 @@ The main interface is divided into three distinct vertical sections (Rows) that 
         └── .right-sidebar     (Col 3: 300px)
 ```
 
-This structure ensures that the Header and Pills are never constrained by the width of the Conversation List, allowing them to span the full interface width as seen in the real LinkedIn UI. with high visual fidelity, including:
+This structure ensures that the Header and Pills are never constrained by the width of the Conversation List, allowing them to span the full interface width as seen in the real LinkedIn UI. It achieves high visual fidelity, including:
 - Three-column responsive layout
 - LinkedIn's design system (colors, typography, spacing)
 - Interactive filter pills with authentic styling
@@ -330,7 +330,7 @@ npm run preview  # Test locally
 
 - **`linkedinm.html`** is the original LinkedIn HTML file used as a visual reference. **Do not modify this file.**
 - **`index.html`** is our working file where all changes are made.
-- The project uses **no external CSS frameworks** - everything is custom-built.
+- The project uses **no external CSS frameworks**, everything is custom-built.
 - All colors and spacing are carefully matched to LinkedIn's production UI.
 
 ## 🤝 Development Guidelines

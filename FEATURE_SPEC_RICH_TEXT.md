@@ -11,8 +11,8 @@
 This feature introduces rich text formatting capabilities to the LinkedIn Messaging experience. By allowing users to emphasize text (Bold, Italic, Underline, Strikethrough), we aim to enhance the clarity, expressiveness, and professionalism of direct communication.
 
 ## 2. Problem Statement
-Current plain-text messaging limits a user's ability to:
-*   Emphasize critical points in professional discussions (e.g., dates, key terms).
+Current plain text messaging limits a user's ability to:
+*   Emphasize critical points in professional discussions (e.g. dates, key terms).
 *   Structure longer messages effectively.
 *   Convey nuance that requires visual distinction.
 
@@ -21,9 +21,27 @@ Current plain-text messaging limits a user's ability to:
 *   **Professionalism:** Provide tools that allow for more structured and polished communication.
 *   **Seamless Integration:** Implement these features within the existing LinkedIn design language without cluttering the UI.
 
-## 4. Functional Requirements
+## 4. Use Cases
+This section details specific scenarios where rich text formatting adds value to the user experience.
 
-### 4.1. Rich Text Toolbar
+### 4.1. Emphasizing Key Details in Professional Updates
+**Scenario:** A recruiter sends a message to a candidate with interview details.
+**Action:** The recruiter uses **Bold** for the date and time, and *Italic* for specific preparation instructions.
+**Benefit:** The candidate can quickly scan the message and identify the most critical information, reducing the chance of missed details.
+
+### 4.2. Structuring Long-Form Project Updates
+**Scenario:** A project manager sends a weekly status update to their team via a group message.
+**Action:** The manager uses **Bold** headers for different project streams and *Italics* to denote pending action items. They use Strikethrough to mark completed tasks from the previous week.
+**Benefit:** The message is organized and readable, similar to a mini-document, making it easier for team members to digest complex information.
+
+### 4.3. Clarifying Technical Instructions
+**Scenario:** A developer shares a code snippet or a specific command with a colleague.
+**Action:** The developer uses **Bold** to highlight the specific parameters that need to be changed by the user.
+**Benefit:** Reduces ambiguity and prevents errors in technical execution.
+
+## 5. Functional Requirements
+
+### 5.1. Rich Text Toolbar
 A formatting toolbar must appear immediately above the message input area.
 
 *   **Buttons:**
@@ -34,18 +52,18 @@ A formatting toolbar must appear immediately above the message input area.
 *   **Behavior:**
     *   **Single Click:** Toggles the formatting style on/off for the current selection or cursor position.
     *   **Active State:** Buttons must visually indicate (via darker background/text) when the style is active at the current cursor position.
-    *   **"Sticky" Mode (Double-Click):** Double-clicking a button forces the style to stay **ON**, even if the second click would normally toggle it off. This ensures users can deliberately lock a style.
-    *   **State Sync:** The toolbar must update in real-time as the user moves the cursor through text with different formatting.
+    *   **"Sticky" Mode (Double Click):** Double clicking a button forces the style to stay **ON**, even if the second click would normally toggle it off. This ensures users can deliberately lock a style.
+    *   **State Sync:** The toolbar must update in real time as the user moves the cursor through text with different formatting.
 
-### 4.2. Message Input Area
+### 5.2. Message Input Area
 *   **Component:** Replaces the standard `<textarea>` with a `contenteditable` container.
 *   **Placeholder:** Displays "Write a message..." when empty.
 *   **Sanitization:** Must ensure no unwanted whitespace exists on initialization.
 *   **Shortcuts:** Supports standard keyboard shortcuts (Cmd/Ctrl+B, Cmd/Ctrl+I, etc.).
 
-## 5. User Experience (UX) & Design
+## 6. User Experience (UX) & Design
 
-### 5.1. Visual Style
+### 6.1. Visual Style
 *   **Toolbar:**
     *   Background: Transparent / Light Grey on hover.
     *   Icons: Simple serif/sans-serif letter representations (B, I, U, S).
@@ -53,17 +71,17 @@ A formatting toolbar must appear immediately above the message input area.
     *   Dimensions: Compact row, 32px height buttons.
 *   **Input Box:**
     *   Retains the "pill" or rounded rectangle look of the original input.
-    *   Auto-expands vertically as user types.
+    *   Auto expands vertically as user types.
 
-### 5.2. Interaction Flow
+### 6.2. Interaction Flow
 1.  **Formatting:** User clicks 'B', button turns dark. User types "Hello". Text appears **Hello**. User clicks 'B' again, button turns light. User types " World". Text appears normal.
 
-## 6. Technical Considerations
+## 7. Technical Considerations
 *   **Implementation:** Use `document.execCommand` for broad compatibility with `contenteditable`.
 *   **State Management:** Use `document.queryCommandState` on `keyup`, `mouseup`, and `click` events to keep the toolbar synced with the editor.
 *   **Focus Management:** Formatting buttons must use `mousedown` (with `preventDefault`) instead of `click` to ensure the editor does not lose focus when buttons are pressed.
 
-## 7. Future Scope (v3.0+)
+## 8. Future Scope (v3.0+)
 *   Hyperlink insertion.
 *   Bulleted and Numbered lists.
 *   Code block formatting.
