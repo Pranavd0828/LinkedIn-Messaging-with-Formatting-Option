@@ -1,80 +1,41 @@
 // LinkedIn Messaging - Interactive Functionality
-// Version 2.0.0
+// Version 2.1.0 (Refactored)
 
-// Dummy conversation data
-const conversationData = {
-    'sarah-jenkins': {
-        name: 'Sarah Jenkins',
-        avatar: 'https://i.pravatar.cc/100?img=44',
-        title: 'Senior Recruiter at Google',
-        messages: [
-            { sender: 'Sarah Jenkins', text: 'Hi Pranav! I came across your profile and was impressed by your experience. We have a Senior PM role open.', time: '2:15 PM', isMine: false },
-            { sender: 'You', text: 'Hi Sarah! Thanks for reaching out. I would love to hear more about the opportunity.', time: '2:20 PM', isMine: true },
-            { sender: 'Sarah Jenkins', text: 'Great! Are you available for a quick chat later this week?', time: '2:25 PM', isMine: false },
-            { sender: 'You', text: 'Yes, Thursday afternoon works best for me.', time: 'Nov 27', isMine: true }
-        ]
-    },
-    'david-chen': {
-        name: 'David Chen',
-        avatar: 'https://i.pravatar.cc/100?img=59',
-        title: 'Director of Product at Netflix',
-        company: 'netflix.com',
-        messages: [
-            { sender: 'David Chen', text: 'Hi! I have an exciting opportunity for a Sr Product Manager role at Netflix that I think would be perfect for you.', time: '1:45 PM', isMine: false },
-            { sender: 'You', text: 'Hi David, thanks for reaching out! I\'m definitely interested in the streaming space.', time: '2:00 PM', isMine: true },
-            { sender: 'David Chen', text: 'Awesome. Let\'s set up a time to chat. Here is my calendar link: calendly.com/david-netflix', time: '2:10 PM', isMine: false },
-            { sender: 'You', text: 'Thank you. I have scheduled a time for Tuesday at 10 AM.', time: '2:38 PM', isMine: true }
-        ]
-    },
-    'emily-rodriguez': {
-        name: 'Emily Rodriguez',
-        avatar: 'https://i.pravatar.cc/100?img=9',
-        title: 'Talent Acquisition at Apple',
-        messages: [
-            { sender: 'Emily Rodriguez', text: 'Sponsored · Join the team building the next generation of Apple services. Apply now!', time: 'Nov 24', isMine: false }
-        ]
-    },
-    'michael-chang': {
-        name: 'Michael Chang',
-        avatar: 'https://i.pravatar.cc/100?img=13',
-        title: 'Product Lead at Uber',
-        messages: [
-            { sender: 'Michael Chang', text: 'Pranav, are you open to new opportunities? We are building a new vertical at Uber.', time: '10:30 AM', isMine: false },
-            { sender: 'You', text: 'Hi Michael, good to hear from you. I\'m always open to interesting conversations.', time: '11:00 AM', isMine: true },
-            { sender: 'Michael Chang', text: 'Perfect. Let\'s grab coffee next week.', time: '11:15 AM', isMine: false },
-            { sender: 'You', text: 'Sounds good. Let me know what day works for you.', time: 'Nov 23', isMine: true }
-        ]
-    },
-    'jessica-williams': {
-        name: 'Jessica Williams',
-        avatar: 'https://i.pravatar.cc/100?img=45',
-        title: 'Recruiter at DoorDash',
-        messages: [
-            { sender: 'Jessica Williams', text: '🚀 DoorDash | 2026 🚀 Hiring Batch - Product Managers needed! Are you interested in learning more?', time: 'Nov 21', isMine: false }
-        ]
-    },
-    'alex-thompson': {
-        name: 'Alex Thompson',
-        avatar: 'https://i.pravatar.cc/100?img=33',
-        title: 'Head of Growth at Stripe',
-        messages: [
-            { sender: 'Alex Thompson', text: 'InMail · Help Us Scale Expert Growth 🚀 - We\'re looking for talented product leaders to join our team.', time: 'Nov 21', isMine: false }
-        ]
-    },
-    'ryan-cooper': {
-        name: 'Ryan Cooper',
-        avatar: 'https://i.pravatar.cc/100?img=53',
-        title: 'Engineering Manager at Meta',
-        messages: [
-            { sender: 'Ryan Cooper', text: 'Hey Pranav, hope you\'re doing well! Saw your recent post about AI product management.', time: 'Nov 19', isMine: false }
-        ]
-    }
+import { conversationData } from './data.js';
+
+// Application State
+const state = {
+    activeConversation: 'david-chen'
 };
 
-// Current active conversation
-let activeConversation = 'david-chen';
+/* --- Helper Functions --- */
 
-// Render the conversation list from data
+// Render a single message HTML
+function createMessageHTML(msg, index, conversationAvatar, conversationName) {
+    const isMine = msg.isMine;
+    const messageClass = isMine ? 'message message--mine' : 'message';
+    const avatarSrc = isMine ? 'https://i.pravatar.cc/100?img=14' : conversationAvatar;
+    const avatarAlt = isMine ? 'You' : conversationName;
+    const editButton = isMine ? `<button class="message__edit-btn" onclick="handleEdit(this)">✎ Edit</button>` : '';
+    const readStatus = isMine && index === conversationData[state.activeConversation].messages.length - 1 ? '<span class="message__read">✓</span>' : '';
+
+    return `
+        <div class="${messageClass}" data-id="${index}">
+            <img src="${avatarSrc}" alt="${avatarAlt}" class="message__avatar">
+            <div class="message__content">
+                <div class="message__header">
+                    <span class="message__sender">${msg.sender}</span>
+                    <span class="message__time">${msg.time}</span>
+                    ${editButton}
+                </div>
+                <div class="message__text">${msg.text}</div>
+                ${readStatus}
+            </div>
+        </div>
+    `;
+}
+
+// Render the conversation list
 function renderConversationList() {
     const listContainer = document.querySelector('.conversation-list__items');
     if (!listContainer) return;
@@ -82,18 +43,11 @@ function renderConversationList() {
     listContainer.innerHTML = Object.keys(conversationData).map(key => {
         const conv = conversationData[key];
         const lastMsg = conv.messages[conv.messages.length - 1];
-        const isActive = key === activeConversation ? 'conversation-item--active' : '';
+        const isActive = key === state.activeConversation ? 'conversation-item--active' : '';
 
-        // Determine preview text (Sender: Text)
-        let previewText = lastMsg.text;
-        if (lastMsg.isMine) {
-            previewText = `<span class="conversation-item__sender">You:</span> <span class="conversation-item__text">${lastMsg.text}</span>`;
-        } else {
-            previewText = `<span class="conversation-item__text">${lastMsg.text}</span>`;
-        }
-
-        // Truncate text for preview
-        // Note: CSS handles truncation visually, but we keep structure clean
+        let previewText = lastMsg.isMine
+            ? `<span class="conversation-item__sender">You:</span> <span class="conversation-item__text">${lastMsg.text}</span>`
+            : `<span class="conversation-item__text">${lastMsg.text}</span>`;
 
         return `
             <div class="conversation-item ${isActive}" data-id="${key}">
@@ -112,241 +66,72 @@ function renderConversationList() {
             </div>
         `;
     }).join('');
+
+    // Re-attach listeners after rendering
+    attachConversationListeners();
 }
-
-// Initialize the app
-function initializeApp() {
-    // Render the list first
-    renderConversationList();
-
-    // Add click handlers to conversation items
-    const conversationItems = document.querySelectorAll('.conversation-item');
-    conversationItems.forEach((item) => {
-        const conversationKey = item.getAttribute('data-id');
-
-        item.addEventListener('click', () => {
-            selectConversation(conversationKey, item);
-        });
-    });
-
-    // Add send message handler
-    const messageInput = document.querySelector('.message-view__input');
-    const sendButton = document.querySelector('.btn-send');
-
-    if (sendButton) {
-        // Initially disable send button
-        sendButton.disabled = true;
-
-        sendButton.addEventListener('click', () => sendMessage());
-    }
-
-    if (messageInput) {
-        // Enable/disable send button based on input
-        messageInput.addEventListener('input', () => {
-            if (sendButton) {
-                sendButton.disabled = messageInput.textContent.trim() === '';
-            }
-        });
-
-        messageInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                sendMessage();
-            }
-        });
-    }
-    // Load initial conversation
-    loadConversation(activeConversation);
-}
-
-// Select a conversation
-function selectConversation(conversationKey, clickedItem) {
-    // Remove active class from all items
-    // Remove active class from all items
-    document.querySelectorAll('.conversation-item').forEach(item => {
-        item.classList.remove('conversation-item--active');
-    });
-
-    // Add active class to clicked item
-    clickedItem.classList.add('conversation-item--active');
-
-    // Update active conversation
-    activeConversation = conversationKey;
-    // Assuming renderConversationList and renderMessageView are new functions to be added or already exist
-    // renderConversationList();
-    // renderMessageView();
-
-    // Load conversation messages
-    loadConversation(conversationKey);
-}
-
-// Rich Text Formatting
-document.addEventListener('DOMContentLoaded', () => {
-    const formatBtns = document.querySelectorAll('.format-btn');
-    const editor = document.querySelector('.message-view__input');
-
-    // Force clear editor to remove any HTML whitespace
-    if (editor && editor.innerHTML.trim() === '') {
-        editor.innerHTML = '';
-    }
-
-    // Toolbar Button Click
-    formatBtns.forEach(btn => {
-        // Use mousedown instead of click to prevent focus loss
-        btn.addEventListener('mousedown', (e) => {
-            e.preventDefault(); // Critical: prevents editor from losing focus
-            const command = btn.dataset.command;
-            document.execCommand(command, false, null);
-            updateToolbarState();
-        });
-
-        // Handle Double Click to ensure it stays selected ("Sticky")
-        // Double click = Click (Toggle On) + Click (Toggle Off) -> Result Off
-        // We want Result On. So if it's Off, toggle it again.
-        btn.addEventListener('dblclick', (e) => {
-            e.preventDefault();
-            const command = btn.dataset.command;
-            // If currently OFF (because 2nd click turned it off), turn it back ON
-            if (!document.queryCommandState(command)) {
-                document.execCommand(command, false, null);
-                updateToolbarState();
-            }
-        });
-    });
-
-    // Update toolbar state on cursor movement
-    if (editor) {
-        editor.addEventListener('keyup', updateToolbarState);
-        editor.addEventListener('mouseup', updateToolbarState);
-        editor.addEventListener('click', updateToolbarState);
-    }
-
-    function updateToolbarState() {
-        formatBtns.forEach(btn => {
-            const command = btn.dataset.command;
-            if (document.queryCommandState(command)) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    }
-});
 
 // Load conversation messages
 function loadConversation(conversationKey) {
     const conversation = conversationData[conversationKey];
     if (!conversation) return;
 
-    // Update header
+    state.activeConversation = conversationKey;
+
+    // Update Header
     const headerAvatar = document.querySelector('.message-view__avatar');
     const headerName = document.querySelector('.message-view__name');
     const headerTitle = document.querySelector('.message-view__title');
 
     if (headerAvatar) headerAvatar.src = conversation.avatar;
     if (headerName) {
-        const time = conversation.messages[conversation.messages.length - 1]?.time || '';
+        const lastMsg = conversation.messages[conversation.messages.length - 1];
+        const time = lastMsg ? lastMsg.time : '';
         headerName.textContent = `${conversation.name} ✓ · ${time}`;
     }
     if (headerTitle) {
         headerTitle.innerHTML = `${conversation.name}<br>${conversation.title}${conversation.company ? '<br>' + conversation.company : ''}`;
     }
 
-    // Update messages
+    // Update Messages
     const messageContainer = document.querySelector('.message-view__content');
-    if (!messageContainer) return;
+    if (messageContainer) {
+        messageContainer.innerHTML = conversation.messages.map((msg, index) =>
+            createMessageHTML(msg, index, conversation.avatar, conversation.name)
+        ).join('');
 
-    messageContainer.innerHTML = conversation.messages.map((msg, index) => {
-        if (msg.isMine) {
-            return `
-        <div class="message message--mine" data-id="${index}">
-          <img src="https://i.pravatar.cc/100?img=14" alt="You" class="message__avatar">
-          <div class="message__content">
-            <div class="message__header">
-              <span class="message__sender">${msg.sender}</span>
-              <span class="message__time">${msg.time}</span>
-              <button class="message__edit-btn" onclick="handleEdit(this)">✎ Edit</button>
-            </div>
-            <div class="message__text">${msg.text}</div>
-          </div>
-        </div>
-      `;
-        } else {
-            return `
-        <div class="message">
-          <img src="${conversation.avatar}" alt="${conversation.name}" class="message__avatar">
-          <div class="message__content">
-            <div class="message__header">
-              <span class="message__sender">${msg.sender}</span>
-              <span class="message__time">${msg.time}</span>
-            </div>
-            <div class="message__text">${msg.text}</div>
-          </div>
-        </div>
-      `;
-        }
-    }).join('');
-
-    // Scroll to bottom
-    messageContainer.scrollTop = messageContainer.scrollHeight;
-}
-
-// Handle Message Editing
-window.handleEdit = function (btn) {
-    const messageEl = btn.closest('.message');
-    const textEl = messageEl.querySelector('.message__text');
-    const currentText = textEl.innerHTML; // Keep HTML for rich text
-
-    // Convert to editable
-    const editableDiv = document.createElement('div');
-    editableDiv.className = 'message__text';
-    editableDiv.contentEditable = true;
-    editableDiv.innerHTML = currentText;
-
-    // Replace div with editable div
-    textEl.replaceWith(editableDiv);
-    editableDiv.focus();
-
-    // Handle Save on Enter
-    editableDiv.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            saveEdit(messageEl, editableDiv.innerHTML);
-        } else if (e.key === 'Escape') {
-            // Cancel edit (reload conversation)
-            loadConversation(activeConversation);
-        }
-    });
-};
-
-function saveEdit(messageEl, newText) {
-    const messageId = messageEl.dataset.id;
-    const conversation = conversationData[activeConversation];
-
-    if (conversation && conversation.messages[messageId]) {
-        // Update data
-        let finalText = newText;
-        if (!finalText.includes('(Edited)')) {
-            finalText += ' <span class="edited-label">(Edited)</span>';
-        }
-        conversation.messages[messageId].text = finalText;
-
-        // Re-render
-        loadConversation(activeConversation);
+        // Scroll to bottom
+        messageContainer.scrollTop = messageContainer.scrollHeight;
     }
+
+    // Update active class in list
+    document.querySelectorAll('.conversation-item').forEach(item => {
+        item.classList.toggle('conversation-item--active', item.dataset.id === conversationKey);
+    });
 }
 
-// Send a message
+
+/* --- Event Handlers & Listeners --- */
+
+function attachConversationListeners() {
+    const conversationItems = document.querySelectorAll('.conversation-item');
+    conversationItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const conversationKey = item.getAttribute('data-id');
+            loadConversation(conversationKey);
+        });
+    });
+}
+
 function sendMessage() {
     const messageInput = document.querySelector('.message-view__input');
-    const text = messageInput.innerHTML; // Get HTML content for rich text
+    const text = messageInput.innerHTML;
 
     if (messageInput.textContent.trim() === '') return;
 
-    const conversation = conversationData[activeConversation];
+    const conversation = conversationData[state.activeConversation];
     if (!conversation) return;
 
-    // Add new message
     const newMessage = {
         sender: 'You',
         text: text,
@@ -356,46 +141,122 @@ function sendMessage() {
 
     conversation.messages.push(newMessage);
 
-    // Clear input
+    // Clear and reset UI
     messageInput.innerHTML = '';
-
-    // Disable send button
     const sendButton = document.querySelector('.btn-send');
     if (sendButton) sendButton.disabled = true;
 
-    // Re-render messages
-    loadConversation(activeConversation);
-
-    // Scroll to bottom
-    const messageContainer = document.querySelector('.message-view__content');
-    if (messageContainer) {
-        messageContainer.scrollTop = messageContainer.scrollHeight;
-    }
-
-    // Update conversation preview in left panel
-    updateConversationPreview(activeConversation, newMessage.text, newMessage.time);
+    // Re-render
+    loadConversation(state.activeConversation);
+    updateConversationPreview(state.activeConversation, newMessage.text, newMessage.time);
 }
 
-// Update conversation preview
 function updateConversationPreview(conversationKey, lastMessage, time) {
-    const conversationItems = document.querySelectorAll('.conversation-item');
-    const conversationKeys = Object.keys(conversationData);
-    const index = conversationKeys.indexOf(conversationKey);
+    // Re-render the list entirely is easiest to keep sync, or update selective DOM
+    // For simplicity and correctness with the new preview logic:
+    renderConversationList();
+}
 
-    if (index >= 0 && conversationItems[index]) {
-        const previewText = conversationItems[index].querySelector('.conversation-item__text');
-        const previewTime = conversationItems[index].querySelector('.conversation-item__time');
+// Make global functions available fo inline HTML event handlers (like onclick="handleEdit(...)")
+// Note: It's better to verify if we can remove inline handlers, but to keep 'no layout change' and minimize risk, we expose only needed ones.
+window.handleEdit = function (btn) {
+    const messageEl = btn.closest('.message');
+    const textEl = messageEl.querySelector('.message__text');
+    const currentText = textEl.innerHTML;
 
-        if (previewText) {
-            previewText.textContent = lastMessage.substring(0, 50) + (lastMessage.length > 50 ? '...' : '');
+    const editableDiv = document.createElement('div');
+    editableDiv.className = 'message__text';
+    editableDiv.contentEditable = true;
+    editableDiv.innerHTML = currentText;
+
+    textEl.replaceWith(editableDiv);
+    editableDiv.focus();
+
+    editableDiv.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            const messageId = messageEl.dataset.id;
+            const conversation = conversationData[state.activeConversation];
+
+            if (conversation && conversation.messages[messageId]) {
+                let finalText = editableDiv.innerHTML;
+                if (!finalText.includes('(Edited)')) {
+                    finalText += ' <span class="edited-label">(Edited)</span>';
+                }
+                conversation.messages[messageId].text = finalText;
+                loadConversation(state.activeConversation);
+            }
+        } else if (e.key === 'Escape') {
+            loadConversation(state.activeConversation);
         }
-        if (previewTime) {
-            previewTime.textContent = time;
-        }
+    });
+};
+
+
+/* --- Initialization --- */
+
+function initializeApp() {
+    renderConversationList();
+    loadConversation(state.activeConversation);
+
+    // Send Message Liteners
+    const messageInput = document.querySelector('.message-view__input');
+    const sendButton = document.querySelector('.btn-send');
+
+    if (sendButton) {
+        sendButton.disabled = true;
+        sendButton.addEventListener('click', sendMessage);
+    }
+
+    if (messageInput) {
+        messageInput.addEventListener('input', () => {
+            if (sendButton) sendButton.disabled = messageInput.textContent.trim() === '';
+        });
+        messageInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
+
+    setupRichText();
+}
+
+function setupRichText() {
+    const formatBtns = document.querySelectorAll('.format-btn');
+    const editor = document.querySelector('.message-view__input');
+
+    if (editor && editor.innerHTML.trim() === '') editor.innerHTML = '';
+
+    const updateToolbarState = () => {
+        formatBtns.forEach(btn => {
+            const command = btn.dataset.command;
+            btn.classList.toggle('active', document.queryCommandState(command));
+        });
+    };
+
+    formatBtns.forEach(btn => {
+        btn.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            const command = btn.dataset.command;
+            document.execCommand(command, false, null);
+            updateToolbarState();
+        });
+        btn.addEventListener('dblclick', (e) => {
+            e.preventDefault();
+            if (!document.queryCommandState(btn.dataset.command)) {
+                document.execCommand(btn.dataset.command, false, null);
+                updateToolbarState();
+            }
+        });
+    });
+
+    if (editor) {
+        ['keyup', 'mouseup', 'click'].forEach(evt => editor.addEventListener(evt, updateToolbarState));
     }
 }
 
-// Initialize when DOM is loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
