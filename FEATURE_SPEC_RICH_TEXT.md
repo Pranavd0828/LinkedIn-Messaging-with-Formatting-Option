@@ -41,9 +41,9 @@ The flow begins when a user clicks into the message input area.
 
 ## 5. Scope and Assumptions
 
-This experiment includes the implementation of five basic formatting styles: Bold, Italic, Underline, Strikethrough, and Bulleted Lists. It also includes the UI for the toolbar and keyboard shortcut support (e.g. Cmd+B).
+This experiment includes the implementation of six basic formatting styles: Bold, Italic, Underline, Strikethrough, Bulleted Lists, and Numbered Lists. It also includes the UI for the toolbar and keyboard shortcut support (e.g. Cmd+B).
 
-We have explicitly excluded more complex formatting like numbered lists, hyperlinks, and code blocks for this initial version. We are assuming that `document.execCommand` or a similar lightweight approach will provide sufficient cross browser compatibility for this prototype.
+We have explicitly excluded more complex formatting like hyperlinks and code blocks for this initial version. We are assuming that `document.execCommand` or a similar lightweight approach will provide sufficient cross browser compatibility for this prototype.
 
 ## 6. Prototype Details
 

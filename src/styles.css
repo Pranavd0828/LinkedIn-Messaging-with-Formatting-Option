@@ -570,6 +570,13 @@ body {
     margin-bottom: 8px;
 }
 
+.message__text ol,
+.message-view__input ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
 .message__text li,
 .message-view__input li {
     margin-bottom: 4px;
