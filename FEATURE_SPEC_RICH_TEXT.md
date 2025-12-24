@@ -41,16 +41,16 @@ The flow begins when a user clicks into the message input area.
 
 ## 5. Scope and Assumptions
 
-This experiment includes the implementation of four basic formatting styles: Bold, Italic, Underline, and Strikethrough. It also includes the UI for the toolbar and keyboard shortcut support (e.g. Cmd+B).
+This experiment includes the implementation of five basic formatting styles: Bold, Italic, Underline, Strikethrough, and Bulleted Lists. It also includes the UI for the toolbar and keyboard shortcut support (e.g. Cmd+B).
 
-We have explicitly excluded more complex formatting like bulleted lists, numbered lists, hyperlinks, and code blocks for this initial version. We are assuming that `document.execCommand` or a similar lightweight approach will provide sufficient cross browser compatibility for this prototype.
+We have explicitly excluded more complex formatting like numbered lists, hyperlinks, and code blocks for this initial version. We are assuming that `document.execCommand` or a similar lightweight approach will provide sufficient cross browser compatibility for this prototype.
 
 ## 6. Prototype Details
 
 The prototype is built using standard HTML5, CSS3, and Vanilla JavaScript.
 
 **Key Components:**
-*   **RichTextToolbar:** A container with four `<button>` elements, each represented by a simple text icon.
+*   **RichTextToolbar:** A container with five `<button>` elements, each represented by a simple text icon.
 *   **MessageInput:** A `<div>` element with `contenteditable="true"` that replaces the standard textarea.
 
 We are using temporary logic to handle the state synchronization between the cursor position and the toolbar buttons (e.g. highlighting the "B" button when the cursor is inside bold text). No backend storage is mocked; the formatted HTML is simply appended to the local DOM message list.

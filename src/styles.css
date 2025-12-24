@@ -563,6 +563,18 @@ body {
     margin-bottom: 8px;
 }
 
+.message__text ul,
+.message-view__input ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
+.message__text li,
+.message-view__input li {
+    margin-bottom: 4px;
+}
+
 .message__read {
     position: absolute;
     bottom: 0;
