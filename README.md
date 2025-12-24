@@ -376,7 +376,7 @@ MIT
 
 Design and UI inspired by LinkedIn's Messaging interface.
 
----
+
 
 **Made with ❤️ using modern web technologies**
 
