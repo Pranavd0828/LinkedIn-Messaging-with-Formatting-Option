@@ -12,7 +12,8 @@ A pixel-perfect recreation of the LinkedIn Messaging interface built with modern
 ## Recent Updates
 - **v2.1.1:** Fixed profile images, dynamic list rendering, and message whitespace issues.
 - **v2.1.0:** Added active state for formatting buttons and message editing functionality with '(Edited)' label.
-- **v2.0.0:** Implemented Rich Text Editor prototype with formatting toolbar.
+- **v2.0.0:** Implemented- **Rich Text Editor:** Format messages with **Bold**, *Italic*, ~~Strikethrough~~, `Underline`, Bullet Points, and Numbered Lists.
+- **Three-Column Layout:** Implemented a responsive grid system (`410px 1fr 300px`) replicating the exact LinkedIn layout.
 - **v1.4.0:** Interactive polish with realistic data, active states, and hover effects.
 - **v1.3.0:** Visual polish for top nav, right sidebar ad, and message input box.
 - **v1.2.0:** Major layout refactor to 3-row stack (Header, Pills, Content).

@@ -21,6 +21,15 @@ This document tracks all versions of the LinkedIn Messaging UI recreation projec
     - **Inline Editing:** Clicking edit converts the message into an inline editor.
     - **Edited Label:** Modified messages are automatically tagged with an `(Edited)` label.
 
+## v2.2.0: List Support
+**Date:** December 24, 2025
+**Status:** ✅ Released
+
+### 🚀 New Features
+- **Bulleted Lists:** Added support for unordered lists with a custom SVG icon.
+- **Numbered Lists:** Added support for ordered lists to allow sequential formatting.
+- **Enhanced Documentation:** Comprehensive updates to feature specs and strategy docs.
+
 ### 🛠 Technical Improvements
 - **State Sync:** Implemented `document.queryCommandState` to ensure the toolbar always reflects the true formatting state.
 
