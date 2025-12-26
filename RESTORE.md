@@ -35,17 +35,27 @@ cp versions/v2.1.0/src/app.js src/app.js
 npm run dev
 ```
 
+### Restore to v2.2.0 (List Support)
+Use this to restore the version with Bullet and Numbered Lists.
+
+```bash
+cp versions/v2.2.0/index.html index.html
+cp versions/v2.2.0/src/styles.css src/styles.css
+cp versions/v2.2.0/src/app.js src/app.js
+npm run dev
+```
+
 ## Creating Backups
 
 To save your current state as a new version:
 
 ```bash
-# Example: creating v2.2.0
-mkdir -p versions/v2.2.0/src
-cp index.html versions/v2.2.0/
-cp src/styles.css versions/v2.2.0/src/
-cp src/app.js versions/v2.2.0/src/
-cp README.md versions/v2.2.0/
+# Example: creating v2.3.0
+mkdir -p versions/v2.3.0/src
+cp index.html versions/v2.3.0/
+cp src/styles.css versions/v2.3.0/src/
+cp src/app.js versions/v2.3.0/src/
+cp README.md versions/v2.3.0/
 ```
 
 ## Directory Structure
@@ -55,5 +65,6 @@ versions/
 ├── v1.0.0/ (Initial Release)
 ├── v1.4.0/ (Polished Classic UI)
 ├── v2.0.0/ (Rich Text Prototype)
-└── v2.1.0/ (Rich Text + Editing)
+├── v2.1.0/ (Rich Text + Editing)
+└── v2.2.0/ (List Support)
 ```
