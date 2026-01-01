@@ -147,6 +147,11 @@ body {
     border-radius: 50%;
 }
 
+.top-nav__item--me {
+    padding-top: 6px;
+    padding-bottom: 0;
+}
+
 .badge {
     position: absolute;
     top: 2px;
