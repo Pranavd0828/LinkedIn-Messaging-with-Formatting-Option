@@ -1,4 +1,4 @@
-# What, why and why now
+# What, how, why and why now
 
 **What we are doing**
 
