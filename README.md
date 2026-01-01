@@ -273,11 +273,18 @@ The filter pill row sits directly below the search bar in the left column:
 
 ### Deployment
 
-```bash
-npm run build    # Creates dist/ folder
-npm run preview  # Test locally
-# Deploy dist/ to your hosting service (Netlify, Vercel, etc.)
-```
+**Automatic Deployment (GitHub Pages):**
+This project is configured to automatically deploy to GitHub Pages when changes are pushed to the `main` branch.
+1. Push your changes: `git push origin main`
+2. View your site at: `https://<your-username>.github.io/LinkedIn-Messaging-with-Formatting-Option/`
+
+**Manual Deployment:**
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+2. The output will be in the `dist/` folder. You can drag and drop this folder into hosting services like Netlify or Vercel.
+   *Note: If deploying to Vercel/Netlify, you may need to remove the `base` property in `vite.config.js` if you are deploying to the root of a domain.*
 
 ## 📝 Recent Updates
 
